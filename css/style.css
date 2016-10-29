@@ -1,0 +1,85 @@
+/**************************logo images size***********************/
+#logoPosition{
+    padding:0 2px;
+    margin-top:10px;
+}
+#logoSize{
+    width: 40px;
+    height: 40px;
+}
+#navPosition{
+    padding-bottom:0px;
+}
+/**************************SarchBar section***********************/
+#searchBar{
+	margin-top: 100px;
+}
+#searchOption{
+	float: left;
+	width: 90%;
+}
+/**************************Slide Styles***************************/
+#slider {
+    width: 1200px;
+    height: 600px;
+    overflow: hidden;
+}
+
+#slider .slides {
+    display: block;
+    width: 6000px;
+    height: 600px;
+    margin: 0;
+    padding: 0;
+}
+
+#slider .slide {
+    float: left;
+    list-style-type: none;
+    width: 1200px;
+    height: 600px;
+}
+#slider .slide img{
+	width:1200px;
+}
+
+@media(max-width:768px){
+    #slider {
+    width: 768px;
+    height: 600px;
+    overflow: hidden;
+}
+
+#slider .slides {
+    display: block;
+    width: 3840px;
+    height: 600px;
+    margin: 0;
+    padding: 0;
+}
+
+#slider .slide {
+    float: left;
+    list-style-type: none;
+    width: 768px;
+    height: 600px;
+}
+#slider .slide img{
+    width:768px;
+}
+}
+/************************Search Result Section CSS*******************/
+#searchResults{
+    overflow: hidden;
+}
+#resultValues{
+    text-align: center;
+}
+.panelImageHeight{
+    height: 400px;
+}
+
+.panelTitleHeight{
+    height: 50px;
+    margin-bottom:10px;
+}
