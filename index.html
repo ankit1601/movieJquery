@@ -36,6 +36,12 @@
 									<li><a href="#">video songs</a></li>
 								</ul>
 							</li>
+							<li >
+								<form action="/" method="GET" id="searchBarMargin">
+									<input type="text" class="form-control navbar-left" placeholder="search your Movie Here" id="searchOption" required="true" />
+									<button type="submit" class="btn btn-default" value="submit" id="search"><span class="glyphicon glyphicon-search"></span></button>
+								</form>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -43,14 +49,14 @@
 			</nav>
 		</header>
 		<!-- Search Bar Section starts here -->
-		<div class="row">
+		<!-- <div class="row">
 			<div class="well well-lg col-lg-12" id="searchBar">
-				<form action="" method="GET" class="col-lg-12">
-					<input type="text" class="form-control col-lg-11 col-md-11 col-sm-11 col-xs-11" placeholder="search your Movie Here" id="searchOption" required/>
-					<button type="submit" class="btn btn-default col-lg-1" id="search"><span class="glyphicon glyphicon-search"></span></button>
+				<form action="/" method="GET" class="col-lg-12">
+					<input type="text" class="form-control col-lg-11 col-md-11 col-sm-11 col-xs-11" placeholder="search your Movie Here" id="searchOption" required="true" />
+					<button type="submit" class="btn btn-default col-lg-1" value="submit" id="search"><span class="glyphicon glyphicon-search"></span></button>
 				</form>
 			</div>
-		</div>
+		</div>-->
 
 		<!-- Slides Section starts here -->
 		<div class="row">
@@ -65,18 +71,61 @@
 				</ul>
 			</div>
 		</div>
-		<!-- Search results show here -->
+		<!-- Search results show here --> 
 		<div class="row">
-					<div class="well well-lg" id="searchResults">
-						<div class="page-header">
-							<h1 class="textColor">search results.......</h1>
-						</div>
-						<div class="rows" id="resultValues">
-
-						</div>
-					</div><!-- well ends here -->
+			<div class="well well-lg" id="searchResults">
+				<input type='hidden' id='current_page' />  
+				<input type='hidden' id='show_per_page' />
+				<div class="page-header">
+					<h1 class="textColor">search results.......</h1>
+				</div>
+				<div class="rows" id="resultValues">
+				</div>
+				<div class="col-lg-12" id='page_navigation' style="text-align: center"></div>  
+			</div><!-- well ends here -->
 		</div>
 	</div>
+	<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-2">
+				<h6>copyright &copy; 2016 mq.stackroute.in</h6>
+			</div>
+			<div class="col-lg-4">
+				<h6>About us</h6>
+				<p>This is the best search engine for quick search of movies information around the world.</p>
+			</div>
+			<div class="col-lg-2">
+				<h6>Navigation</h6>
+				<ul class="unstyled">
+					<li><a href="">disclaimer</a></li>
+					<li><a href="">notice</a></li>
+					<li><a href="">terms</a></li>
+				</ul>
+			</div>
+			<div class="col-lg-2">
+				<h6>Follow Us</h6>
+				<ul class="unstyled">
+					<li><a href="">Twitter</a></li>
+					<li><a href="">Facebook</a></li>
+					<li><a href="">Google Plus</a></li>
+				</ul>
+			</div>
+			<div class="col-lg-2">
+				<h6>Visit our partners</h6>
+				<ul class="unstyled">
+					<li><a href="http://www.allmovie.com/">All Movies</a></li>
+					<li><a href="http://www.imdb.com/">IMDB</a></li>
+					<li><a href="https://www.justwatch.com/">Just Watch</a></li>
+				</ul>
+				
+			</div>
+			<!-- rows ends here -->
+		</div>
+		<!-- container ends here -->
+	</div>
+	<!-- footer section ends here -->
+</footer>
 	<script type="text/javascript" src="./lib/bootstrap/js/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="./lib/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="./js/script.js"></script>

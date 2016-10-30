@@ -1,7 +1,7 @@
 /**************************logo images size***********************/
 #logoPosition{
     padding:0 2px;
-    margin-top:10px;
+    margin-top:15px;
 }
 #logoSize{
     width: 40px;
@@ -10,17 +10,22 @@
 #navPosition{
     padding-bottom:0px;
 }
-/**************************SarchBar section***********************/
-#searchBar{
-	margin-top: 100px;
+#navbarcollapse{
+     margin-top: 10px;
 }
+#searchBarMargin{
+    margin-top: 10px;
+}
+/**************************SarchBar section***********************/
 #searchOption{
 	float: left;
-	width: 90%;
+	width: 80%;
 }
 /**************************Slide Styles***************************/
 #slider {
-    width: 1200px;
+    margin-top: 90px;
+    margin-bottom: 10px; 
+    width: 1170px;
     height: 600px;
     overflow: hidden;
 }
@@ -71,6 +76,7 @@
 /************************Search Result Section CSS*******************/
 #searchResults{
     overflow: hidden;
+    margin-top:90px;
 }
 #resultValues{
     text-align: center;
@@ -82,4 +88,19 @@
 .panelTitleHeight{
     height: 50px;
     margin-bottom:10px;
+}
+/***************************footer section css************************/
+footer {
+    background: black;
+    color: white;
+    font-size: 11px;
+    padding-margin: 100px;
+}
+footer ul.unstyled {
+    list-style: none;
+    padding: 0;
+    text-decoration: none;
+}
+footer ul.unstyled li a {
+    color: white;
 }
