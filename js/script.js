@@ -42,60 +42,59 @@ $(function() {
 	$('#search').on('click', function(e) {
 		e.preventDefault();
 		var answer = confirm("you searched for " + $('#searchOption').val());
-		var title = $('#searchOption').val();
-		var urlLink = 'http://www.omdbapi.com/?s=' + title;
+		var searchValue = $('#searchOption').val();
+		var urlLink = 'http://www.omdbapi.com/?s=' + searchValue;
 		var myData = [];
 		var title, poster, type, year;
-		if (answer === true){
+		if (answer === true) {
 			$.ajax({
 				type: 'GET',
 				url: urlLink,
 				dataType: 'json',
 				success: function(data) {
-					$('#slider').remove();
+					$('#myCarousel').hide();
 					$('#resultValues').empty();
 					$('#searchResults').show();
 					if (data.Response === "True") {
-						console.log("in the success: " + data);
+						//console.log("in the success: " + data);
 						$.each(data, function(value) {
-							console.log(value);
+							//console.log(value);
 							if (value === 'Search') {
 								myData = data.Search;
 							}
 						});
 						console.log(myData);
 						$.each(myData, function(index) {
-							console.log(myData[index]);
+							//console.log(myData[index]);
 							var obj = myData[index];
-							title = obj.Title;
-							year = obj.Year;
-							type = obj.Type;
-							if (obj.Poster != "N/A") {
-								poster = obj.Poster;
-							} else {
-								poster = "./../images/default.jpg";
+							// title = obj.Title;
+							// year = obj.Year;
+							// type = obj.Type;
+							if (obj.Poster == "N/A") {
+								obj.Poster = "./../images/default.jpg";
 							}
-							$('#resultValues').append('<div class="col-lg-4 movie"><div class="panel panel-primary"><div class="panel-heading panelTitleHeight"><h3 class="panel-title">' + title + '</h3></div><img src="' + poster + '" class="img-responsive center-block" style="height:400px" alt="image not Available"/><div class="panel-body">Year: ' + year + '<br>type:' + type + '</div></div></div>');
+							var movieTemplate = '<div class="col-lg-4 col-md-6 col-sm-6 movie"><div class="panel panel-primary"><div class="panel-heading panelTitleHeight"><h3 class="panel-title">{{Title}}</h3></div><img src="{{Poster}}" class="img-responsive center-block" style="height:400px" alt="image not Available"/><div class="panel-body">Year:{{Year}}<br>type:{{Type}}</div><button class="btn btn-info btn-block" type="button" id="movieInfo">Click Here More Information</button></div></div>';
+							//$('#resultValues').append('<div class="col-lg-4 movie"><div class="panel panel-primary"><div class="panel-heading panelTitleHeight"><h3 class="panel-title">' + title + '</h3></div><img src="' + poster + '" class="img-responsive center-block" style="height:400px" alt="image not Available"/><div class="panel-body">Year: ' + year + '<br>type:' + type + '</div></div></div>');
+							$('#resultValues').append(Mustache.render(movieTemplate, obj));
 						});
 						//how much items per page to show  
 						var show_per_page = 6;
 						//getting the amount of elements inside content div  
 						var number_of_items = $('#resultValues').children().length;
-						console.log("number_of_items:" + number_of_items);
+						//console.log("number_of_items:" + number_of_items);
 						//calculate the number of pages we are going to have  
 						var number_of_pages = Math.ceil(number_of_items / show_per_page);
-						if(number_of_pages===1){
+						if (number_of_pages === 1) {
 							$('#page_navigation').hide();
-						}
-						else{
+						} else {
 							$('#page_navigation').show();
 						}
 
 						//set the value of our hidden input fields  
 						$('#current_page').val(0);
 						$('#show_per_page').val(show_per_page);
-						console.log($('#current_page').val());
-						console.log("show per page in main part: " + $('#show_per_page').val());
+						//console.log($('#current_page').val());
+						//console.log("show per page in main part: " + $('#show_per_page').val());
 
 						//now when we got all we need for the navigation let's make it '  
 
@@ -105,7 +104,7 @@ $(function() {
 						    - links to specific pages 
 						    - link to next page 
 						*/
-						var navigation_html ='<a class="previous_link" href="javascript:previous();">Prev</a>&nbsp;&nbsp;';
+						var navigation_html = '<a class="previous_link" href="javascript:previous();">Prev</a>&nbsp;&nbsp;';
 						var current_link = 0;
 						while (number_of_pages > current_link) {
 							navigation_html += '<a class="page_link" href="javascript:go_to_page(' + current_link + ')" longdesc="' + current_link + '">' + (current_link + 1) + '</a>&nbsp;&nbsp;';
@@ -125,12 +124,42 @@ $(function() {
 						$('#resultValues').children().slice(0, show_per_page).css('display', 'block');
 					} else {
 						$('#resultValues').append('<h1>' + data.Error + '</h1>');
+						$('#page_navigation').hide();
 					}
 				}
 			});
 		}
 	});
 });
+
+$(document).on("click", "#movieInfo", function(e){
+	console.log("For More Information");
+	console.log((($(this).siblings('.panel-heading')).children('.panel-title')).text());
+	var title = (($(this).siblings('.panel-heading')).children('.panel-title')).text();
+	console.log(title);
+	var url2 = 'http://www.omdbapi.com/?t=' + title + '&plot=full&r=json';
+	$.ajax({
+		type: 'GET',
+		url: url2,
+		dataType: 'json',
+		success: function(data) {
+			console.log("On success");
+			if (data.Response === "True") {
+				if (data.Poster == "N/A") {
+								data.Poster = "./../images/default.jpg";
+					}
+				var movieFullInfo = '<h2><strong>{{Title}}</strong></h2><img src="{{Poster}}"class="thumbnail img-responsive pull-right" id="modalImage" alt="Image not Available"><p><strong>Year:</strong>{{Year}}</p><p><strong>Rated:</strong>{{Rated}}</p><p><strong>Released:</strong>{{Released}}</p><p><strong>Runtime:</strong>{{Runtime}}</p><p><strong>Genre:</strong>{{Genre}}</p><p><strong>Director:</strong>{{Director}}</p><p><strong>Writer:</strong>{{Writer}}</p><p><strong>Actors:</strong>{{Actors}}</p><p><strong>Language:</strong>{{Language}}</p><p><strong>Country:</strong>{{Country}}</p><p><strong>Awards:</strong>{{Awards}}</p><p><strong>Metascore:</strong>{{Metascore}}</p><p><strong>imdbRating:</strong>{{imdbRating}}</p><p><strong>imdbVotes:</strong>{{imdbVotes}}</p><p><strong>imdbID:</strong>{{imdbID}}</p><p><strong>Type:</strong>{{Type}}</p><p><strong>Story:</strong>{{Plot}}</p>';
+				$('.modal-body').html(Mustache.render(movieFullInfo, data));		
+
+			} else {
+				$('.modal-body').append('<h1>' + data.Error + '</h1>');
+			}
+		}
+	});
+		$('#myModal').modal();
+
+});
+
 
 function previous() {
 
@@ -156,7 +185,7 @@ function go_to_page(page_num) {
 	var show_per_page = parseInt($('#show_per_page').val());
 	console.log("show_per_page:" + show_per_page);
 	//get the element number where to start the slice from
-	console.log("page_num " + page_num);  
+	console.log("page_num " + page_num);
 	start_from = page_num * show_per_page;
 
 	//get the element number where to end the slice  

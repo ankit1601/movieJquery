@@ -15,6 +15,7 @@
 }
 #searchBarMargin{
     margin-top: 10px;
+    margin-left:10px;
 }
 /**************************SarchBar section***********************/
 #searchOption{
@@ -22,9 +23,9 @@
 	width: 80%;
 }
 /**************************Slide Styles***************************/
-#slider {
+/*#slider {
     margin-top: 90px;
-    margin-bottom: 10px; 
+    margin-bottom: 20px; 
     width: 1170px;
     height: 600px;
     overflow: hidden;
@@ -51,14 +52,14 @@
 @media(max-width:768px){
     #slider {
     width: 768px;
-    height: 600px;
+    height: 400px;
     overflow: hidden;
 }
 
 #slider .slides {
     display: block;
     width: 3840px;
-    height: 600px;
+    height: 400px;
     margin: 0;
     padding: 0;
 }
@@ -67,11 +68,14 @@
     float: left;
     list-style-type: none;
     width: 768px;
-    height: 600px;
+    height: 400px;
 }
 #slider .slide img{
     width:768px;
 }
+}*/
+#myCarousel {
+    margin-top:70px;
 }
 /************************Search Result Section CSS*******************/
 #searchResults{
@@ -89,12 +93,18 @@
     height: 50px;
     margin-bottom:10px;
 }
+
+/******************modal images section*******************************/
+#modalImage{
+    margin:10px;
+}
+
 /***************************footer section css************************/
 footer {
     background: black;
     color: white;
     font-size: 11px;
-    padding-margin: 100px;
+    margin-bottom: 0;
 }
 footer ul.unstyled {
     list-style: none;
