@@ -40,23 +40,30 @@
 #resultValues{
     text-align: center;
 }
+#navigation{
+ text-align: center; 
+}
 #page_navigation{
-    text-align: center;
+    background: black;
+}
+#page_navigation a{
+    color: white;
+}
+#page_navigation a:hover{
+    background: white;
+    color: black;
 }
 .panelImageHeight{
     height: 400px;
 }
-
 .panelTitleHeight{
     height: 50px;
     margin-bottom:10px;
 }
-
 /******************modal images section*******************************/
 #modalImage{
     margin:10px;
 }
-
 /***************************footer section css************************/
 footer {
     background: black;

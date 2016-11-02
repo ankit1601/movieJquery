@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>MovieQwik</title>	
-	<!-- -->
+	<!---->
 	<link rel="stylesheet" type="text/css" href="./lib/bootstrap/css/bootstrap.min.css">
 	<link rel="icon" href="./images/logo.jpg" type="image/gif" sizes="16x16">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
@@ -39,7 +40,7 @@
 							</li>
 							<li >
 								<form action="/" method="GET" id="searchBarMargin">
-									<input type="text" class="form-control navbar-left" placeholder="search your Movie Here" id="searchOption" required="true" />
+									<input type="text" class="form-control navbar-left" placeholder="search your Movie Here" id="searchOption" required/>
 									<button type="submit" class="btn btn-default" value="submit" id="search"><span class="glyphicon glyphicon-search"></span></button>
 								</form>
 							</li>
@@ -102,7 +103,9 @@
 				</div>
 				<div class="rows" id="resultValues">
 				</div>
-				<div class="col-lg-12" id='page_navigation'></div>  
+				<div class="col-lg-12" id="navigation" style="text-align: center">
+					<ul id='page_navigation' class="pagination"></ul>
+				</div>
 			</div><!-- well ends here -->
 		</div>
 		<!-- Modal Window starts here which will show movie information -->
