@@ -1,0 +1,74 @@
+/**************************logo images size***********************/
+#logoPosition{
+    padding:0 2px;
+    margin-top:15px;
+}
+#logoSize{
+    width: 40px;
+    height: 40px;
+}
+#navPosition{
+    padding-bottom:0px;
+}
+#navbarcollapse{
+     margin-top: 10px;
+}
+#searchBarMargin{
+    margin-top: 10px;
+    margin-left:10px;
+}
+/**************************SarchBar section***********************/
+#searchOption{
+	float: left;
+	width: 80%;
+}
+/**************************Carousel Styles***************************/
+
+#myCarousel {
+    margin-top:70px;
+}
+@media(max-width: 768px){
+    .fontSize{
+        font-size: 20px;
+    }
+}
+/************************Search Result Section CSS*******************/
+#searchResults{
+    overflow: hidden;
+    margin-top:90px;
+}
+#resultValues{
+    text-align: center;
+}
+#page_navigation{
+    text-align: center;
+}
+.panelImageHeight{
+    height: 400px;
+}
+
+.panelTitleHeight{
+    height: 50px;
+    margin-bottom:10px;
+}
+
+/******************modal images section*******************************/
+#modalImage{
+    margin:10px;
+}
+
+/***************************footer section css************************/
+footer {
+    background: black;
+    color: white;
+    font-size: 11px;
+    margin-bottom: 0;
+}
+footer ul.unstyled {
+    list-style: none;
+    padding: 0;
+    text-decoration: none;
+}
+footer ul.unstyled li a {
+    color: white;
+}
