@@ -1,44 +1,6 @@
 $(function() {
-
-	//settings for slider
-	var width = $('#slider').width() + 30;
-	console.log(width);
-	var animationSpeed = 500;
-	var pause = 2000;
-	var currentSlide = 1;
-
-	//cache DOM elements
-	var $slider = $('#slider');
-	var $slideContainer = $('.slides', $slider);
-	var $slides = $('.slide', $slider);
-
-	var interval;
-
-	function startSlider() {
-		//console.log("Slider Function Called");
-		interval = setInterval(function() {
-			$slideContainer.animate({
-				'margin-left': '-=' + width
-			}, animationSpeed, function() {
-				if (++currentSlide === $slides.length) {
-					currentSlide = 1;
-					$slideContainer.css('margin-left', 0);
-				}
-			});
-		}, pause);
-	}
-
-	function pauseSlider() {
-		clearInterval(interval);
-	}
-
-	$slideContainer
-		.on('mouseenter', pauseSlider)
-		.on('mouseleave', startSlider);
-
-	startSlider();
 	$('#searchResults').hide();
-
+	// ****************AJAX call and code for search of movie with title and displaying the results**************
 	$('#search').on('click', function(e) {
 		e.preventDefault();
 		var answer = confirm("you searched for " + $('#searchOption').val());
@@ -56,20 +18,14 @@ $(function() {
 					$('#resultValues').empty();
 					$('#searchResults').show();
 					if (data.Response === "True") {
-						//console.log("in the success: " + data);
 						$.each(data, function(value) {
-							//console.log(value);
 							if (value === 'Search') {
 								myData = data.Search;
 							}
 						});
 						console.log(myData);
 						$.each(myData, function(index) {
-							//console.log(myData[index]);
 							var obj = myData[index];
-							// title = obj.Title;
-							// year = obj.Year;
-							// type = obj.Type;
 							if (obj.Poster == "N/A") {
 								obj.Poster = "./../images/default.jpg";
 							}
@@ -81,7 +37,6 @@ $(function() {
 						var show_per_page = 6;
 						//getting the amount of elements inside content div  
 						var number_of_items = $('#resultValues').children().length;
-						//console.log("number_of_items:" + number_of_items);
 						//calculate the number of pages we are going to have  
 						var number_of_pages = Math.ceil(number_of_items / show_per_page);
 						if (number_of_pages === 1) {
@@ -89,15 +44,9 @@ $(function() {
 						} else {
 							$('#page_navigation').show();
 						}
-
 						//set the value of our hidden input fields  
 						$('#current_page').val(0);
 						$('#show_per_page').val(show_per_page);
-						//console.log($('#current_page').val());
-						//console.log("show per page in main part: " + $('#show_per_page').val());
-
-						//now when we got all we need for the navigation let's make it '  
-
 						/* 
 						what are we going to have in the navigation? 
 						    - link to previous page 
@@ -132,7 +81,8 @@ $(function() {
 	});
 });
 
-$(document).on("click", "#movieInfo", function(e){
+//*************************AJAX Call and dynamic data fill for modal window********************
+$(document).on("click", "#movieInfo", function(e) {
 	console.log("For More Information");
 	console.log((($(this).siblings('.panel-heading')).children('.panel-title')).text());
 	var title = (($(this).siblings('.panel-heading')).children('.panel-title')).text();
@@ -146,17 +96,17 @@ $(document).on("click", "#movieInfo", function(e){
 			console.log("On success");
 			if (data.Response === "True") {
 				if (data.Poster == "N/A") {
-								data.Poster = "./../images/default.jpg";
-					}
+					data.Poster = "./../images/default.jpg";
+				}
 				var movieFullInfo = '<h2><strong>{{Title}}</strong></h2><img src="{{Poster}}"class="thumbnail img-responsive pull-right" id="modalImage" alt="Image not Available"><p><strong>Year:</strong>{{Year}}</p><p><strong>Rated:</strong>{{Rated}}</p><p><strong>Released:</strong>{{Released}}</p><p><strong>Runtime:</strong>{{Runtime}}</p><p><strong>Genre:</strong>{{Genre}}</p><p><strong>Director:</strong>{{Director}}</p><p><strong>Writer:</strong>{{Writer}}</p><p><strong>Actors:</strong>{{Actors}}</p><p><strong>Language:</strong>{{Language}}</p><p><strong>Country:</strong>{{Country}}</p><p><strong>Awards:</strong>{{Awards}}</p><p><strong>Metascore:</strong>{{Metascore}}</p><p><strong>imdbRating:</strong>{{imdbRating}}</p><p><strong>imdbVotes:</strong>{{imdbVotes}}</p><p><strong>imdbID:</strong>{{imdbID}}</p><p><strong>Type:</strong>{{Type}}</p><p><strong>Story:</strong>{{Plot}}</p>';
-				$('.modal-body').html(Mustache.render(movieFullInfo, data));		
+				$('.modal-body').html(Mustache.render(movieFullInfo, data));
 
 			} else {
 				$('.modal-body').append('<h1>' + data.Error + '</h1>');
 			}
 		}
 	});
-		$('#myModal').modal();
+	$('#myModal').modal();
 
 });
 

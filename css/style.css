@@ -22,60 +22,15 @@
 	float: left;
 	width: 80%;
 }
-/**************************Slide Styles***************************/
-/*#slider {
-    margin-top: 90px;
-    margin-bottom: 20px; 
-    width: 1170px;
-    height: 600px;
-    overflow: hidden;
-}
+/**************************Carousel Styles***************************/
 
-#slider .slides {
-    display: block;
-    width: 6000px;
-    height: 600px;
-    margin: 0;
-    padding: 0;
-}
-
-#slider .slide {
-    float: left;
-    list-style-type: none;
-    width: 1200px;
-    height: 600px;
-}
-#slider .slide img{
-	width:1200px;
-}
-
-@media(max-width:768px){
-    #slider {
-    width: 768px;
-    height: 400px;
-    overflow: hidden;
-}
-
-#slider .slides {
-    display: block;
-    width: 3840px;
-    height: 400px;
-    margin: 0;
-    padding: 0;
-}
-
-#slider .slide {
-    float: left;
-    list-style-type: none;
-    width: 768px;
-    height: 400px;
-}
-#slider .slide img{
-    width:768px;
-}
-}*/
 #myCarousel {
     margin-top:70px;
+}
+@media(max-width: 768px){
+    .fontSize{
+        font-size: 20px;
+    }
 }
 /************************Search Result Section CSS*******************/
 #searchResults{
@@ -83,6 +38,9 @@
     margin-top:90px;
 }
 #resultValues{
+    text-align: center;
+}
+#page_navigation{
     text-align: center;
 }
 .panelImageHeight{
